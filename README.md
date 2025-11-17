@@ -1,8 +1,8 @@
 <!-- regenerate: on (set to off if you edit this file) -->
 
-# TODO - Your title
+# The IPv6 Loopback Address Prefix
 
-This is the working area for the individual Internet-Draft, "TODO - Your title".
+This is the working area for the individual Internet-Draft, "The IPv6 Loopback Address Prefix".
 
 * [Editor's Copy](https://wkumari.github.io/draft-kumari-ipv6-loopback/#go.draft-kumari-ipv6-loopback.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-kumari-ipv6-loopback)
