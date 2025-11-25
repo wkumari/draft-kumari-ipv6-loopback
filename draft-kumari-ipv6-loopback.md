@@ -154,7 +154,7 @@ infrastructure security.
 
 The IANA is requested to amend the IPv6 Address registry and the IPv6 Special
 Purpose Address registry to record the designation of the IPv6 address prefix
-::/32 as denoting the IPV6 Loopback function.
+::/96 as denoting the IPV6 Loopback function.
 
 --- back
 
