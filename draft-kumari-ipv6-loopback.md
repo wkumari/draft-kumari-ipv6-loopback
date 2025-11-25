@@ -16,13 +16,10 @@ keyword:
  - IPv6
  - Loopback
  - Documentation
-# venue:
-#   group: WG
-#   type: Working Group
-#   mail: WG@example.com
-#   arch: https://example.com/WG
-#   github: USER/REPO
-#   latest: https://example.com/LATEST
+venue:
+  type: Working Group
+  github: wkumari/draft-kumari-ipv6-loopback
+  latest: https://wkumari.github.io/draft-kumari-ipv6-loopback/draft-kumari-ipv6-loopback.html
 
 author:
  -
@@ -159,7 +156,10 @@ was being referenced in this case.))
 IPv6 addressing documents do not have any direct impact on Internet
 infrastructure security.
 
-((WK: I don't think that we need to add anything about the "Unspecified Address", nor the behavior of "packets with source address of ::" since this is already covered in RFC 4291, but figured I'd mention it here for completeness.))
+((WK: I don't think that we need to add anything about the "Unspecified
+Address", nor the behavior of "packets with source address of ::" since this is
+already covered in RFC 4291, but figured I'd mention it here for
+completeness.))
 
 # IANA Considerations
 
