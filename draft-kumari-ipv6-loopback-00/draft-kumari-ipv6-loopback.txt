@@ -1,0 +1,265 @@
+
+
+
+
+WG Working Group                                               G. Huston
+Internet-Draft                                                     APNIC
+Intended status: Standards Track                               W. Kumari
+Expires: 29 May 2026                                        Google, Inc.
+                                                        25 November 2025
+
+
+                    The IPv6 Loopback Address Prefix
+                   draft-kumari-ipv6-loopback-latest
+
+Abstract
+
+   This document updates the IP Version 6 Address Architecture to define
+   the IPv6 address prefix ::/32 as the Loopback address prefix.
+
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   The latest revision of this draft can be found at
+   https://wkumari.github.io/draft-kumari-ipv6-loopback/draft-kumari-
+   ipv6-loopback.html.  Status information for this document may be
+   found at https://datatracker.ietf.org/doc/draft-kumari-
+   ipv6-loopback/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/wkumari/draft-kumari-ipv6-loopback.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 29 May 2026.
+
+Copyright Notice
+
+   Copyright (c) 2025 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction
+   2.  Conventions and Definitions
+   3.  Loopback addresses
+   4.  The IPv6 Loopback Prefix
+   5.  Security Considerations
+   6.  IANA Considerations
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
+   Acknowledgments
+   Authors' Addresses
+
+1.  Introduction
+
+   In the IP address architecture, a loopback address is a special IP
+   address used by hosts to send data to itself.  Packets directed to a
+   loopback address are automatically routed back to the sending host’s
+   network software stack without ever reaching the physical network
+   interface.  This has use in some forms of testing and is used to
+   support a non-network method to facilitate local inter-process
+   communication within a host.
+
+   This document updates the IP Version 6 Address Architecture to define
+   the IPv6 address prefix ::/32 as the Loopback address prefix.
+
+2.  Conventions and Definitions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+3.  Loopback addresses
+
+   The IPv4 network 127.0.0.0/8 was reserved by the IANA in [RFC791]
+   where tha class-based address architecture was described.  It is
+   understood that it was the IANA's policy at the time to reserve the
+   first and last network of each class, and the address prefixes
+   0.0.0.0/8 and 127.0.0.0/8 from the Class A space were reserved in
+   accordance with this practice.  [RFC990] listed the 127.0.0.0/8
+   address prefix as being used by the loopback function, and this
+   function was listed as a requirement for all Internet hosts in
+   [RFC1122].
+
+   The "loopback" function is defined such that an outbound packet that
+   triggers this loopback function should loop back to the packet
+   ingress queue for processing by the same host.  No packet that is
+   addresses to a network 127 address should ever to passed to any
+   network.
+
+   [RFC1884], the original IPv6 Addressing Architecture document,
+   allocates a single local loopback address, ::1.  This single address
+   allocation has been preserved in all subsequent revision to the IPv6
+   addressing specification ([RFC2373], [RFC3513], [RFC4291])
+
+   These addresses enable localhost communication, network diagnostics,
+   and inter-process connections, making them essential for developers
+   and IT professionals.
+
+   Multiple loopback addresses can increase the number of distinct
+   sockets that can be used for inter-process communication within a
+   host.  A larger local loopback address in IPv6 can permit large
+   numbers of distinct concurrent loopback TCP connections within a
+   single host, which is comparable the the functionality supported in
+   the IPv4 loopback address prefix.
+
+4.  The IPv6 Loopback Prefix
+
+   The IANA IPv6 Address registry denotes the address prefix ::/8 as
+   being reserved by the IETF in [RFC3513] [RFC4291].  This range has
+   been partially allocated with the prefix ::FFFF:0:0/32 being used in
+   the context of an IPv6 transition technology to map IPv4 addresses
+   into IPv6 addresses.
+
+   The document expands the set of IPv6 loopback addresses to span the
+   address prefix range ::0 through to ::FFFFFFFF (or ::/32 in prefix
+   notation).
+
+   This RFC replaces section 2.5.2 and 2.5.3 of [RFC4291] as follows:
+
+      The Loopback prefix
+
+      The unicast address prefix ::/32 is called the loopback address
+      prefix.
+
+      The first address of this address prefix block, 0:0:0:0:0:0:0:0,
+      is also termed the "unspecified address".  This address MUST NOT
+      be assigned to any node, as it indicates the absence of an
+      address.  One example of the use of this address is in the Source
+      Address field of any IPv6 packets sent by an initializing host
+      before it has learned its own address.
+
+      All other loopback addresses drawn from this prefix may be used by
+      a node as a destination address to send an IPv6 packet to itself.
+      These addresses MUST NOT be assigned to any physical interface.
+      These addresses are treated as having Link-Local scope, and may be
+      thought of as the Link-Local unicast address prefix of a virtual
+      interface (typically called the "loopback interface") to an
+      imaginary link that goes nowhere.
+
+      All loopback addresses other than the unspecified address MUST NOT
+      be used as the source address in IPv6 packets that are sent
+      outside of a single node.  An IPv6 packet with a destination
+      address of loopback address MUST NOT be sent outside of a single
+      node and must never be forwarded by an IPv6 router.  A packet
+      received on an interface with a destination loopback address MUST
+      be dropped.
+
+   ((Geoff: I have gone for a simple prefix that sits below the
+   IPv4-mapped address block of 0:0:0:0:0:FFFF::/32 - the complication
+   is that the prefix then includes the "unspecified address" as well.))
+
+   ((Geoff: this last sentence of the paragraph on the unspecified
+   address, lifted from RFC4291, strikes me as incorrect!  If a packet
+   is sent out an interface with a source address of all zeros then
+   nobody can respond and the packet has no purpose.  I'm inclined to
+   drop this sentence from the proposed update, but as I don't think I
+   was paying attention to IPv6 when this text was originally
+   incorporated into the IPv6 Address Architecture so I have no idea
+   what scenario was being referenced in this case.))
+
+5.  Security Considerations
+
+   IPv6 addressing documents do not have any direct impact on Internet
+   infrastructure security.
+
+   ((WK: I don't think that we need to add anything about the
+   "Unspecified Address", nor the behavior of "packets with source
+   address of ::" since this is already covered in RFC 4291, but figured
+   I'd mention it here for completeness.))
+
+6.  IANA Considerations
+
+   The IANA is requested to amend the IPv6 Address registry and the IPv6
+   Special Purpose Address registry to record the designation of the
+   IPv6 address prefix ::/32 as denoting the IPV6 Loopback function.
+
+7.  References
+
+7.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC4291]  Hinden, R. and S. Deering, "IP Version 6 Addressing
+              Architecture", RFC 4291, DOI 10.17487/RFC4291, February
+              2006, <https://www.rfc-editor.org/rfc/rfc4291>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+7.2.  Informative References
+
+   [RFC1122]  Braden, R., Ed., "Requirements for Internet Hosts -
+              Communication Layers", STD 3, RFC 1122,
+              DOI 10.17487/RFC1122, October 1989,
+              <https://www.rfc-editor.org/rfc/rfc1122>.
+
+   [RFC1884]  Hinden, R., Ed. and S. Deering, Ed., "IP Version 6
+              Addressing Architecture", RFC 1884, DOI 10.17487/RFC1884,
+              December 1995, <https://www.rfc-editor.org/rfc/rfc1884>.
+
+   [RFC2373]  Hinden, R. and S. Deering, "IP Version 6 Addressing
+              Architecture", RFC 2373, DOI 10.17487/RFC2373, July 1998,
+              <https://www.rfc-editor.org/rfc/rfc2373>.
+
+   [RFC3513]  Hinden, R. and S. Deering, "Internet Protocol Version 6
+              (IPv6) Addressing Architecture", RFC 3513,
+              DOI 10.17487/RFC3513, April 2003,
+              <https://www.rfc-editor.org/rfc/rfc3513>.
+
+   [RFC791]   Postel, J., "Internet Protocol", STD 5, RFC 791,
+              DOI 10.17487/RFC0791, September 1981,
+              <https://www.rfc-editor.org/rfc/rfc791>.
+
+   [RFC990]   Reynolds, J. and J. Postel, "Assigned numbers", RFC 990,
+              DOI 10.17487/RFC0990, November 1986,
+              <https://www.rfc-editor.org/rfc/rfc990>.
+
+Acknowledgments
+
+   TODO acknowledge.
+
+Authors' Addresses
+
+   Geoff Huston
+   APNIC
+   6 Cordelia St
+   South Brisbane  QLD 4101
+   Australia
+   Email: gih@apnic.net
+
+
+   W. Kumari
+   Google, Inc.
+   Email: warren@kumari.net
