@@ -143,6 +143,11 @@ includes the "unspecified address" as well, so the RFC4291 text relating to the
 unspecificed address is reproduced in this proposed amendment, as this text proposes
 replacing the entirety of sections 2.5.2 and 2.5.3 of RFC4291.))
 
+((Geoff: David Farmer has proposed adding additional text noting that this proposed
+address designation clashes with the now deprecated IPv4-Compativle IPv6 Address
+designation in section 2.5.5.1. It is noted that this was deprecatred in RFC4291 and
+I propose no further mention of this deprecated historic address designation.))
+
 # Security Considerations
 
 IPv6 addressing documents do not have any direct impact on Internet
@@ -156,9 +161,14 @@ The IANA is requested to amend the IPv6 Address registry and the IPv6 Special
 Purpose Address registry to record the designation of the IPv6 address prefix
 ::/96 as denoting the IPV6 Loopback function.
 
+The IANA is also requested to add an entry to the IPv6 Locally-Served DNS Zone Registry
+for the entry 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA	
+
 --- back
 
 # Acknowledgments
 {:numbered="false"}
 
 TODO acknowledge.
+
+((Geoff: ack to David Farmer, Jeremy Duncan. ))
