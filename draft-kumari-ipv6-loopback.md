@@ -144,9 +144,11 @@ unspecificed address is reproduced in this proposed amendment, as this text prop
 replacing the entirety of sections 2.5.2 and 2.5.3 of RFC4291.))
 
 ((Geoff: David Farmer has proposed adding additional text noting that this proposed
-address designation clashes with the now deprecated IPv4-Compativle IPv6 Address
-designation in section 2.5.5.1. It is noted that this was deprecatred in RFC4291 and
-I propose no further mention of this deprecated historic address designation.))
+address designation clashes with the now deprecated IPv4-Compatible IPv6 Address
+designation in section 2.5.5.1. It is noted that this was deprecated in RFC4291 
+twenty years ago and\ I'm propose no further mention of this deprecated historic
+address designation. David  is suggesting that this should be explicity noted in
+this text.))
 
 # Security Considerations
 
