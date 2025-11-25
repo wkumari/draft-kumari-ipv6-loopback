@@ -146,8 +146,8 @@ replacing the entirety of sections 2.5.2 and 2.5.3 of RFC4291.))
 ((Geoff: David Farmer has proposed adding additional text noting that this proposed
 address designation clashes with the now deprecated IPv4-Compatible IPv6 Address
 designation in section 2.5.5.1. It is noted that this was deprecated in RFC4291 
-twenty years ago and\ I'm propose no further mention of this deprecated historic
-address designation. David  is suggesting that this should be explicity noted in
+twenty years ago and I'm proposing no further mention of this deprecated historic
+address designation. David  suggests that this old designation should be explicity noted in
 this text.))
 
 # Security Considerations
@@ -174,3 +174,5 @@ for the entry 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
 TODO acknowledge.
 
 ((Geoff: ack to David Farmer, Jeremy Duncan. ))
+
+((Geoff: this is not the first such proposal - Mark Smith noted the 2013 effort: draft-smith-v6ops-larger-ipv6-loopback-prefix-04, which proposed a /32 designation
