@@ -5,8 +5,8 @@
 WG Working Group                                               G. Huston
 Internet-Draft                                                     APNIC
 Intended status: Standards Track                               W. Kumari
-Expires: 21 May 2026                                        Google, Inc.
-                                                        17 November 2025
+Expires: 29 May 2026                                        Google, Inc.
+                                                        25 November 2025
 
 
                     The IPv6 Loopback Address Prefix
@@ -15,7 +15,7 @@ Expires: 21 May 2026                                        Google, Inc.
 Abstract
 
    This document updates the IP Version 6 Address Architecture to define
-   the IPv6 address prefix ::/32 as the Loopback address prefix.
+   the IPv6 address prefix ::/96 as the Loopback address prefix.
 
 Status of This Memo
 
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 May 2026.
+   This Internet-Draft will expire on 29 May 2026.
 
 Copyright Notice
 
@@ -95,26 +95,26 @@ Table of Contents
    function was listed as a requirement for all Internet hosts in
    [RFC1122].
 
-   The "loopback" function is defined such that an outbound packet that
-   triggers this loopback function should loop back to the packet
-   ingress queue for processing by the same host.  No packet that is
-   addresses to a network 127 address should ever to passed to any
-   network.
+   The "loopback" function is defined such that an outbound packet whose
+   destination address triggers this loopback function should loop the
+   packet back to the packet ingress queue for processing by the same
+   host.  No packet that is addresses to a loopback address should ever
+   to passed to any network.
 
    [RFC1884], the original IPv6 Addressing Architecture document,
    allocates a single local loopback address, ::1.  This single address
    allocation has been preserved in all subsequent revision to the IPv6
    addressing specification ([RFC2373], [RFC3513], [RFC4291])
 
-   These addresses enable localhost communication, network diagnostics,
-   and inter-process connections, making them essential for developers
-   and IT professionals.
+   Loopback addresses enable localhost communication, network
+   diagnostics, and inter-process connections, making them essential for
+   various local functions.
 
    Multiple loopback addresses can increase the number of distinct
    sockets that can be used for inter-process communication within a
-   host.  A larger local loopback address in IPv6 can permit large
-   numbers of distinct concurrent loopback TCP connections within a
-   single host, which is comparable the the functionality supported in
+   host.  A larger local loopback address prefix in IPv6 can permit
+   large numbers of distinct concurrent loopback TCP connections within
+   a single host, which is comparable the the functionality supported by
    the IPv4 loopback address prefix.
 
 4.  The IPv6 Loopback Prefix
@@ -126,14 +126,14 @@ Table of Contents
    into IPv6 addresses.
 
    The document expands the set of IPv6 loopback addresses to span the
-   address prefix range ::0 through to ::FFFFFFFF (or ::/32 in prefix
+   address prefix range ::0 through to ::FFFF:FFFF (or ::/96 in prefix
    notation).
 
    This RFC replaces section 2.5.2 and 2.5.3 of [RFC4291] as follows:
 
       The Loopback prefix
 
-      The unicast address prefix ::/32 is called the loopback address
+      The unicast address prefix ::/96 is called the loopback address
       prefix.
 
       The first address of this address prefix block, 0:0:0:0:0:0:0:0,
@@ -160,17 +160,11 @@ Table of Contents
       be dropped.
 
    ((Geoff: I have gone for a simple prefix that sits below the
-   IPv4-mapped address block of 0:0:0:0:0:FFFF::/32 - the complication
-   is that the prefix then includes the "unspecified address" as well.))
-
-   ((Geoff: this last sentence of the paragraph on the unspecified
-   address, lifted from RFC4291, strikes me as incorrect!  If a packet
-   is sent out an interface with a source address of all zeros then
-   nobody can respond and the packet has no purpose.  I'm inclined to
-   drop this sentence from the proposed update, but as I don't think I
-   was paying attention to IPv6 when this text was originally
-   incorporated into the IPv6 Address Architecture so I have no idea
-   what scenario was being referenced in this case.))
+   IPv4-mapped address block of 0:0:0:0:0:FFFF::/96 - the complication
+   is that the prefix then includes the "unspecified address" as well,
+   so the RFC4291 text relating to the unspecificed address is
+   reproduced in this proposed amendment, as this text proposes
+   replacing the entirety of sections 2.5.2 and 2.5.3 of RFC4291.))
 
 5.  Security Considerations
 
@@ -241,9 +235,6 @@ Authors' Addresses
 
    Geoff Huston
    APNIC
-   6 Cordelia St
-   South Brisbane  QLD 4101
-   Australia
    Email: gih@apnic.net
 
 
