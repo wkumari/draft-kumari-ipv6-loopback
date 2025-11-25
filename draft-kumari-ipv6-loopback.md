@@ -64,8 +64,8 @@ address prefix ::/32 as the Loopback address prefix.
 
 In the IP address architecture, a loopback address is a special IP address used
 by hosts to send data to itself. Packets directed to a loopback address are
-automatically routed back to the sending host’s network software stack without
-ever reaching the physical network interface. This has use in some forms of
+automatically routed back to the sending host's network software stack without
+ever reaching a physical network interface. This has use in some forms of
 testing and is used to support a non-network method to facilitate local
 inter-process communication within a host.
 
@@ -78,7 +78,7 @@ address prefix ::/32 as the Loopback address prefix.
 
 # Loopback addresses
 
-The IPv4 network 127.0.0.0/8 was reserved by the IANA in {{RFC791}} where tha
+The IPv4 network 127.0.0.0/8 was reserved by the IANA in {{RFC791}} where the
 class-based address architecture was described. It is understood that it was
 the IANA's policy at the time to reserve the first and last network of each
 class, and the address prefixes 0.0.0.0/8 and 127.0.0.0/8 from the Class A
@@ -89,7 +89,7 @@ function was listed as a requirement for all Internet hosts in {{RFC1122}}.
 The "loopback" function is defined such that an outbound packet that triggers
 this loopback function should loop back to the packet ingress queue for
 processing by the same host. No packet that is addresses to a network 127
-address should ever to passed to any network.
+address should ever to passed to any physical network.
 
 {{RFC1884}}, the original IPv6 Addressing Architecture document, allocates a
 single local loopback address, ::1. This single address allocation has been
@@ -102,9 +102,9 @@ professionals.
 
 Multiple loopback addresses can increase the number of distinct sockets that
 can be used for inter-process communication within a host. A larger local
-loopback address in IPv6 can permit large numbers of distinct concurrent
-loopback TCP connections within a single host, which is comparable the the
-functionality supported in the IPv4 loopback address prefix.
+loopback address prefix in IPv6 can permit large numbers of distinct
+concurrent loopback TCP connections within a single host, which is comparable
+to the functionality supported in the IPv4 loopback address prefix.
 
 # The IPv6 Loopback Prefix
 
@@ -113,8 +113,8 @@ reserved by the IETF in {{RFC3513}} {{RFC4291}}. This range has been partially
 allocated with the prefix ::FFFF:0:0/32 being used in the context of an IPv6
 transition technology to map IPv4 addresses into IPv6 addresses.
 
-The document expands the set of IPv6 loopback addresses to span the address
-prefix range ::0 through to ::FFFFFFFF (or ::/32 in prefix notation).
+This document expands the set of IPv6 loopback addresses to span the address
+prefix range ::0 through ::FFFFFFFF (or ::/32 in prefix notation).
 
 This RFC replaces section 2.5.2 and 2.5.3 of {{RFC4291}} as follows:
 
@@ -141,6 +141,10 @@ This RFC replaces section 2.5.2 and 2.5.3 of {{RFC4291}} as follows:
 >outside of a single node and must never be forwarded by an IPv6 router. A
 >packet received on an interface with a destination loopback address MUST be
 >dropped.
+
+((heas: ::1/32 remains the primary loopback address and MUST (SHOULD?) be
+assigned to a loopback interface.))
+
 
 ((Geoff: I have gone for a simple prefix that sits below the IPv4-mapped
 address block of 0:0:0:0:0:FFFF::/32 - the complication is that the prefix then
