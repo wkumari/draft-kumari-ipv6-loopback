@@ -30,10 +30,6 @@ author:
     fullname: Geoff Huston
     organization: APNIC
     email: gih@apnic.net
-    street: 6 Cordelia St
-    city: South Brisbane
-    code: QLD 4101
-    country: Australia
  -
     ins: W. Kumari
     organization: Google, Inc.
@@ -55,7 +51,7 @@ informative:
 --- abstract
 
 This document updates the IP Version 6 Address Architecture to define the IPv6
-address prefix ::/32 as the Loopback address prefix.
+address prefix ::/96 as the Loopback address prefix.
 
 
 --- middle
@@ -86,25 +82,24 @@ space were reserved in accordance with this practice. {{RFC990}} listed the
 127.0.0.0/8 address prefix as being used by the loopback function, and this
 function was listed as a requirement for all Internet hosts in {{RFC1122}}.
 
-The "loopback" function is defined such that an outbound packet that triggers
-this loopback function should loop back to the packet ingress queue for
-processing by the same host. No packet that is addresses to a network 127
-address should ever to passed to any network.
+The "loopback" function is defined such that an outbound packet whose
+destination address triggers this loopback function should loop the packet
+back to the packet ingress queue for processing by the same host. No packet
+that is addresses to a loopback address should ever to passed to any network.
 
 {{RFC1884}}, the original IPv6 Addressing Architecture document, allocates a
 single local loopback address, ::1. This single address allocation has been
 preserved in all subsequent revision to the IPv6 addressing specification
 ({{RFC2373}}, {{RFC3513}}, {{RFC4291}})
 
-These addresses enable localhost communication, network diagnostics, and
-inter-process connections, making them essential for developers and IT
-professionals.
+Loopback addresses enable localhost communication, network diagnostics, and
+inter-process connections, making them essential for various local functions.
 
 Multiple loopback addresses can increase the number of distinct sockets that
 can be used for inter-process communication within a host. A larger local
-loopback address in IPv6 can permit large numbers of distinct concurrent
+loopback address prefix in IPv6 can permit large numbers of distinct concurrent
 loopback TCP connections within a single host, which is comparable the the
-functionality supported in the IPv4 loopback address prefix.
+functionality supported by the IPv4 loopback address prefix.
 
 # The IPv6 Loopback Prefix
 
@@ -114,13 +109,13 @@ allocated with the prefix ::FFFF:0:0/32 being used in the context of an IPv6
 transition technology to map IPv4 addresses into IPv6 addresses.
 
 The document expands the set of IPv6 loopback addresses to span the address
-prefix range ::0 through to ::FFFFFFFF (or ::/32 in prefix notation).
+prefix range ::0 through to ::FFFF:FFFF (or ::/96 in prefix notation).
 
 This RFC replaces section 2.5.2 and 2.5.3 of {{RFC4291}} as follows:
 
 >The Loopback prefix
 >
->The unicast address prefix ::/32 is called the loopback address prefix.
+>The unicast address prefix ::/96 is called the loopback address prefix.
 >
 >The first address of this address prefix block, 0:0:0:0:0:0:0:0, is also termed
 >the "unspecified address". This address MUST NOT be assigned to any node, as it
@@ -143,16 +138,10 @@ This RFC replaces section 2.5.2 and 2.5.3 of {{RFC4291}} as follows:
 >dropped.
 
 ((Geoff: I have gone for a simple prefix that sits below the IPv4-mapped
-address block of 0:0:0:0:0:FFFF::/32 - the complication is that the prefix then
-includes the "unspecified address" as well.))
-
-((Geoff: this last sentence of the paragraph on the unspecified address, lifted
-from RFC4291, strikes me as incorrect! If a packet is sent out an interface
-with a source address of all zeros then nobody can respond and the packet has
-no purpose. I'm inclined to drop this sentence from the proposed update, but as
-I don't think I was paying attention to IPv6 when this text was originally
-incorporated into the IPv6 Address Architecture so I have no idea what scenario
-was being referenced in this case.))
+address block of 0:0:0:0:0:FFFF::/96 - the complication is that the prefix then
+includes the "unspecified address" as well, so the RFC4291 text relating to the
+unspecificed address is reproduced in this proposed amendment, as this text proposes
+replacing the entirety of sections 2.5.2 and 2.5.3 of RFC4291.))
 
 # Security Considerations
 
