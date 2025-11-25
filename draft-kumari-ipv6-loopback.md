@@ -66,7 +66,7 @@ testing and is used to support a non-network method to facilitate local
 inter-process communication within a host.
 
 This document updates the IP Version 6 Address Architecture to define the IPv6
-address prefix ::/32 as the Loopback address prefix.
+address prefix ::/96 as the Loopback address prefix.
 
 # Conventions and Definitions
 
@@ -105,7 +105,7 @@ functionality supported by the IPv4 loopback address prefix.
 
 The IANA IPv6 Address registry denotes the address prefix ::/8 as being
 reserved by the IETF in {{RFC3513}} {{RFC4291}}. This range has been partially
-allocated with the prefix ::FFFF:0:0/32 being used in the context of an IPv6
+allocated with the prefix ::FFFF:0:0/96 being used in the context of an IPv6
 transition technology to map IPv4 addresses into IPv6 addresses.
 
 The document expands the set of IPv6 loopback addresses to span the address
@@ -117,13 +117,13 @@ This RFC replaces section 2.5.2 and 2.5.3 of {{RFC4291}} as follows:
 >
 >The unicast address prefix ::/96 is called the loopback address prefix.
 >
->The first address of this address prefix block, 0:0:0:0:0:0:0:0, is also termed
+>The first address of this address prefix block, 0:0:0:0:0:0:0:0 (::/128), is also termed
 >the "unspecified address". This address MUST NOT be assigned to any node, as it
 >indicates the absence of an address. One example of the use of this address is
 >in the Source Address field of any IPv6 packets sent by an initializing host
 >before it has learned its own address.
 >
->All other loopback addresses drawn from this prefix may be used by a node as a
+>All other loopback addresses drawn from this loopback address prefix may be used by a node as a
 >destination address to send an IPv6 packet to itself. These addresses MUST NOT
 >be assigned to any physical interface. These addresses are treated as having
 >Link-Local scope, and may be thought of as the Link-Local unicast address
@@ -137,7 +137,7 @@ This RFC replaces section 2.5.2 and 2.5.3 of {{RFC4291}} as follows:
 >packet received on an interface with a destination loopback address MUST be
 >dropped.
 
-((Geoff: I have gone for a simple prefix that sits below the IPv4-mapped
+((Geoff: I have gone for proposing a simple prefix that sits below the IPv4-mapped
 address block of 0:0:0:0:0:FFFF::/96 - the complication is that the prefix then
 includes the "unspecified address" as well, so the RFC4291 text relating to the
 unspecificed address is reproduced in this proposed amendment, as this text proposes
