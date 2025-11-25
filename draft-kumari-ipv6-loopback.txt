@@ -181,7 +181,7 @@ Table of Contents
 
    The IANA is requested to amend the IPv6 Address registry and the IPv6
    Special Purpose Address registry to record the designation of the
-   IPv6 address prefix ::/32 as denoting the IPV6 Loopback function.
+   IPv6 address prefix ::/96 as denoting the IPV6 Loopback function.
 
 7.  References
 
