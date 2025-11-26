@@ -1194,8 +1194,8 @@ address prefix ::/96 as the Loopback address prefix.<a href="#section-abstract-1
       </h2>
 <p id="section-1-1">In the IP address architecture, a loopback address is a special IP address used
 by hosts to send data to itself. Packets directed to a loopback address are
-automatically routed back to the sending host’s network software stack without
-ever reaching the physical network interface. This has use in some forms of
+automatically routed back to the sending host's network software stack without
+ever reaching a physical network interface. This has use in some forms of
 testing and is used to support a non-network method to facilitate local
 inter-process communication within a host.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">This document updates the IP Version 6 Address Architecture to define the IPv6
@@ -1218,7 +1218,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-loopback-addresses">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-loopback-addresses" class="section-name selfRef">Loopback addresses</a>
       </h2>
-<p id="section-3-1">The IPv4 network 127.0.0.0/8 was reserved by the IANA in <span>[<a href="#RFC791" class="cite xref">RFC791</a>]</span> where tha
+<p id="section-3-1">The IPv4 network 127.0.0.0/8 was reserved by the IANA in <span>[<a href="#RFC791" class="cite xref">RFC791</a>]</span> where the
 class-based address architecture was described. It is understood that it was
 the IANA's policy at the time to reserve the first and last network of each
 class, and the address prefixes 0.0.0.0/8 and 127.0.0.0/8 from the Class A
@@ -1228,7 +1228,7 @@ function was listed as a requirement for all Internet hosts in <span>[<a href="#
 <p id="section-3-2">The "loopback" function is defined such that an outbound packet whose
 destination address triggers this loopback function should loop the packet back
 to the packet ingress queue for processing by the same host. No packet that is
-addresses to a loopback address should ever to passed to any network.<a href="#section-3-2" class="pilcrow">¶</a></p>
+addresses to a loopback address should ever to passed to any physical network.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <p id="section-3-3"><span>[<a href="#RFC1884" class="cite xref">RFC1884</a>]</span>, the original IPv6 Addressing Architecture document, allocates a
 single local loopback address, ::1. This single address allocation has been
 preserved in all subsequent revision to the IPv6 addressing specification
@@ -1237,8 +1237,8 @@ preserved in all subsequent revision to the IPv6 addressing specification
 inter-process connections, making them essential for various local functions.<a href="#section-3-4" class="pilcrow">¶</a></p>
 <p id="section-3-5">Multiple loopback addresses can increase the number of distinct sockets that
 can be used for inter-process communication within a host. A larger local
-loopback address prefix in IPv6 can permit large numbers of distinct concurrent
-loopback TCP connections within a single host, which is comparable the the
+loopback prefix in IPv6 can permit large numbers of distinct concurrent
+loopback TCP connections within a single host, which is comparable to the
 functionality supported by the IPv4 loopback address prefix.<a href="#section-3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1252,7 +1252,7 @@ reserved by the IETF in <span>[<a href="#RFC3513" class="cite xref">RFC3513</a>]
 allocated with the prefix ::FFFF:0:0/96 being used in the context of an IPv6
 transition technology to map IPv4 addresses into IPv6 addresses.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <p id="section-4-2">The document expands the set of IPv6 loopback addresses to span the address
-prefix range ::0 through to ::FFFF:FFFF (or ::/96 in prefix notation).<a href="#section-4-2" class="pilcrow">¶</a></p>
+prefix range ::0 through through ::FFFF:FFFF (or ::/96 in prefix notation).<a href="#section-4-2" class="pilcrow">¶</a></p>
 <p id="section-4-3">This RFC replaces section 2.5.2 and 2.5.3 of <span>[<a href="#RFC4291" class="cite xref">RFC4291</a>]</span> as follows:<a href="#section-4-3" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
 <li class="normal ulEmpty" id="section-4-4.1">
@@ -1298,10 +1298,12 @@ designation should be explicity noted in this text.))<a href="#section-4-6" clas
       </h2>
 <p id="section-5-1">IPv6 addressing documents do not have any direct impact on Internet
 infrastructure security.<a href="#section-5-1" class="pilcrow">¶</a></p>
-<p id="section-5-2">((WK: I don't think that we need to add anything about the "Unspecified
+<p id="section-5-2">((heas: ::1/32 remains the primary loopback address and <span class="bcp14">MUST</span> (<span class="bcp14">SHOULD</span>?) be
+assigned to a loopback interface.))<a href="#section-5-2" class="pilcrow">¶</a></p>
+<p id="section-5-3">((WK: I don't think that we need to add anything about the "Unspecified
 Address", nor the behavior of "packets with source address of ::" since this is
 already covered in RFC 4291, but figured I'd mention it here for
-completeness.))<a href="#section-5-2" class="pilcrow">¶</a></p>
+completeness.))<a href="#section-5-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
@@ -1386,15 +1388,16 @@ Registry for the entry 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA<
 Chariton, Owen DeLong, Gert Doering, Jeremy Duncan, David Farmer, Steinar Haug,
 Gábor Lencse, Terry Sweetser, Ole Trøan, and Maciej Żenczykowski for their
 comments, discussions, and suggestions on this topic.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
-<p id="appendix-A-2">We would also like to thank Mark Smith for an earlier (2013) effort:
-draft-smith-v6ops-larger-ipv6-loopback-prefix-04, which proposed a /32
-designation.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
-<p id="appendix-A-3">The need for a loopback address prefix has long been a topic of discussion in
+<p id="appendix-A-2">Additional thanks to John Heasley for submitting Pull Requests.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<p id="appendix-A-3">We would also like to speciofically thank Mark Smith for an earlier (2013)
+effort: draft-smith-v6ops-larger-ipv6-loopback-prefix-04, which proposed a /32
+designation.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+<p id="appendix-A-4">The need for a loopback address prefix has long been a topic of discussion in
 various forums, and we would like to acknowledge the contributions of many
 individuals who have participated in these discussions over the years.
 Unfortunately, at least one of the authors has a terrible memory, and has lost
 track of all those who have contributed to this topic over the years, and will
-be more than happy to acknowledge their input if reminded of this :-)<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+be more than happy to acknowledge their input if reminded of this :-)<a href="#appendix-A-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
