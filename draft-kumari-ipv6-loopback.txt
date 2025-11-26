@@ -255,8 +255,11 @@ Table of Contents
 
 Acknowledgments
 
-   The authors would like to thank David Farmer and Jeremy Duncan for
-   their comments, discussions, and suggestions on this topic.
+   The authors would like to thank Alejandro Acosta, Brian Carpenter,
+   Antonis Chariton, Owen DeLong, Gert Doering, Jeremy Duncan, David
+   Farmer, Steinar Haug, Gábor Lencse, Terry Sweetser, Ole Trøan, and
+   Maciej Żenczykowski for their comments, discussions, and suggestions
+   on this topic.
 
    We would also like to thank Mark Smith for an earlier (2013) effort:
    draft-smith-v6ops-larger-ipv6-loopback-prefix-04, which proposed a
