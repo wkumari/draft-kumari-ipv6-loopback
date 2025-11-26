@@ -172,7 +172,9 @@ Registry for the entry 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
 # Acknowledgments
 {:numbered="false"}
 
-The authors would like to thank David Farmer and Jeremy Duncan for their
+The authors would like to thank Alejandro Acosta, Brian Carpenter, Antonis
+Chariton, Owen DeLong, Gert Doering, Jeremy Duncan, David Farmer, Steinar Haug,
+Gábor Lencse, Terry Sweetser, Ole Trøan, and Maciej Żenczykowski for their
 comments, discussions, and suggestions on this topic.
 
 We would also like to thank Mark Smith for an earlier (2013) effort:
