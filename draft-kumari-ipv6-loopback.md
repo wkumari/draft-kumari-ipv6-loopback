@@ -82,11 +82,11 @@ function was listed as a requirement for all Internet hosts in {{RFC1122}}.
 The "loopback" function is defined such that an outbound packet whose
 destination address triggers this loopback function should loop the packet back
 to the packet ingress queue for processing by the same host. No packet that is
-addresses to a loopback address should ever to passed to any physical network.
+addressed to a loopback address should ever be passed to any physical network.
 
 {{RFC1884}}, the original IPv6 Addressing Architecture document, allocates a
 single local loopback address, ::1. This single address allocation has been
-preserved in all subsequent revision to the IPv6 addressing specification
+preserved in all subsequent revisions to the IPv6 addressing specification
 ({{RFC2373}}, {{RFC3513}}, {{RFC4291}})
 
 Loopback addresses enable localhost communication, network diagnostics, and
@@ -101,12 +101,12 @@ functionality supported by the IPv4 loopback address prefix.
 # The IPv6 Loopback Prefix
 
 The IANA IPv6 Address registry denotes the address prefix ::/8 as being
-reserved by the IETF in {{RFC3513}} {{RFC4291}}. This range has been partially
+reserved by the IETF in {{RFC3513}} {{RFC4291}}. This range of addresses has been partially
 allocated with the prefix ::FFFF:0:0/96 being used in the context of an IPv6
 transition technology to map IPv4 addresses into IPv6 addresses.
 
 The document expands the set of IPv6 loopback addresses to span the address
-prefix range ::0 through through ::FFFF:FFFF (or ::/96 in prefix notation).
+range ::0 through through ::FFFF:FFFF (or ::/96 in prefix notation).
 
 This RFC replaces section 2.5.2 and 2.5.3 of {{RFC4291}} as follows:
 
@@ -182,7 +182,7 @@ comments, discussions, and suggestions on this topic.
 
 Additional thanks to John Heasley for submitting Pull Requests.
 
-We would also like to speciofically thank Mark Smith for an earlier (2013)
+We would also like to specifically thank Mark Smith for an earlier (2013)
 effort: draft-smith-v6ops-larger-ipv6-loopback-prefix-04, which proposed a /32
 designation.
 
