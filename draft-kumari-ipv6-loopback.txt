@@ -5,8 +5,8 @@
 WG Working Group                                               G. Huston
 Internet-Draft                                                     APNIC
 Intended status: Standards Track                               W. Kumari
-Expires: 29 May 2026                                        Google, Inc.
-                                                        25 November 2025
+Expires: 30 May 2026                                        Google, Inc.
+                                                        26 November 2025
 
 
                     The IPv6 Loopback Address Prefix
@@ -16,6 +16,19 @@ Abstract
 
    This document updates the IP Version 6 Address Architecture to define
    the IPv6 address prefix ::/96 as the Loopback address prefix.
+
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   The latest revision of this draft can be found at
+   https://wkumari.github.io/draft-kumari-ipv6-loopback/draft-kumari-
+   ipv6-loopback.html.  Status information for this document may be
+   found at https://datatracker.ietf.org/doc/draft-kumari-
+   ipv6-loopback/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/wkumari/draft-kumari-ipv6-loopback.
 
 Status of This Memo
 
@@ -32,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 May 2026.
+   This Internet-Draft will expire on 30 May 2026.
 
 Copyright Notice
 
@@ -169,9 +182,11 @@ Table of Contents
 
    ((Geoff: David Farmer has proposed adding additional text noting that
    this proposed address designation clashes with the now deprecated
-   IPv4-Compativle IPv6 Address designation in section 2.5.5.1.  It is
-   noted that this was deprecatred in RFC4291 and I propose no further
-   mention of this deprecated historic address designation.))
+   IPv4-Compatible IPv6 Address designation in section 2.5.5.1.  It is
+   noted that this was deprecated in RFC4291 twenty years ago and I'm
+   proposing no further mention of this deprecated historic address
+   designation.  David suggests that this old designation should be
+   explicity noted in this text.))
 
 5.  Security Considerations
 
@@ -240,9 +255,20 @@ Table of Contents
 
 Acknowledgments
 
-   TODO acknowledge.
+   The authors would like to thank David Farmer and Jeremy Duncan for
+   their comments, discussions, and suggestions on this topic.
 
-   ((Geoff: ack to David Farmer, Jeremy Duncan. ))
+   We would also like to thank Mark Smith for an earlier (2013) effort:
+   draft-smith-v6ops-larger-ipv6-loopback-prefix-04, which proposed a
+   /32 designation.
+
+   The need for a loopback address prefix has long been a topic of
+   discussion in various forums, and we would like to acknowledge the
+   contributions of many individuals who have participated in these
+   discussions over the years.  Unfortunately, at least one of the
+   authors has a terrible memory, and has lost track of all those who
+   have contributed to this topic over the years, and will be more than
+   happy to acknowledge their input if reminded of this :-)
 
 Authors' Addresses
 
