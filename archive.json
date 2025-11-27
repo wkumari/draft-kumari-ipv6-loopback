@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-11-25T00:16:56.337063+00:00",
+  "timestamp": "2025-11-27T00:17:46.297501+00:00",
   "repo": "wkumari/draft-kumari-ipv6-loopback",
   "labels": [
     {
@@ -50,5 +50,40 @@
     }
   ],
   "issues": [],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOQXnmMc61ggwr",
+      "title": "Misc corrections & a suggestion",
+      "url": "https://github.com/wkumari/draft-kumari-ipv6-loopback/pull/1",
+      "state": "CLOSED",
+      "author": "haussli",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-11-25T22:17:58Z",
+      "updatedAt": "2025-11-26T15:07:56Z",
+      "baseRepository": "wkumari/draft-kumari-ipv6-loopback",
+      "baseRefName": "main",
+      "baseRefOid": "432ce98a72b609725cd684675714909f62e62662",
+      "headRepository": "haussli/draft-kumari-ipv6-loopback",
+      "headRefName": "main",
+      "headRefOid": "15b9d1fb4b6f1679ae36f1731c3314160e7de6e2",
+      "closedAt": "2025-11-26T15:07:55Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "wkumari",
+          "authorAssociation": "OWNER",
+          "body": "Thank you very much for the PR -- we had made a bunch of edits and so it wouldn't cleanly merge, and so I have manually copied your changed in instead.\r\n\r\nThank you agian!\r\nW",
+          "createdAt": "2025-11-26T15:07:55Z",
+          "updatedAt": "2025-11-26T15:07:55Z"
+        }
+      ],
+      "reviews": []
+    }
+  ]
 }
