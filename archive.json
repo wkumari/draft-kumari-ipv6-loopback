@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-04-26T00:34:38.495299+00:00",
+  "timestamp": "2026-04-28T00:37:36.294512+00:00",
   "repo": "wkumari/draft-kumari-ipv6-loopback",
   "labels": [
     {
@@ -83,6 +83,34 @@
           "updatedAt": "2025-11-26T15:07:55Z"
         }
       ],
+      "reviews": []
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOQXnmMc7WGHdr",
+      "title": "Address comments from IETF125.",
+      "url": "https://github.com/wkumari/draft-kumari-ipv6-loopback/pull/2",
+      "state": "MERGED",
+      "author": "wkumari",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "This replaces \"expand into ::/96\" with \"please allocate a new /96\". I preferred the ::/96 solution, but the WG didn't :-)",
+      "createdAt": "2026-04-27T19:50:23Z",
+      "updatedAt": "2026-04-27T20:26:28Z",
+      "baseRepository": "wkumari/draft-kumari-ipv6-loopback",
+      "baseRefName": "main",
+      "baseRefOid": "b654864cd2fe3f8c9764f318b1dba2a2bfab56f4",
+      "headRepository": "wkumari/draft-kumari-ipv6-loopback",
+      "headRefName": "ietf125_comments_new_prefix",
+      "headRefOid": "93d2b1e65d6a78c6a3d2e116f421eb65265cff62",
+      "closedAt": "2026-04-27T20:26:28Z",
+      "mergedAt": "2026-04-27T20:26:28Z",
+      "mergedBy": "gih900",
+      "mergeCommit": {
+        "oid": "58185d5eaaf1613459130709fbcb745e2ebdde98"
+      },
+      "comments": [],
       "reviews": []
     }
   ]
