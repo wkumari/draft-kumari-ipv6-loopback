@@ -4,7 +4,7 @@ title: "The IPv6 Loopback Address Prefix"
 abbrev: "IPv6 Loopback Prefix"
 category: std
 
-docname: draft-kumari-ipv6-loopback-latest
+docname: draft-ietf-6man-loopback-latest
 submissiontype: IETF
 number:
 date:
@@ -194,8 +194,6 @@ This RFC replaces section 2.5.3 of {{RFC4291}} as follows:
 IPv6 addressing documents do not have any direct impact on Internet
 infrastructure security.
 
-((heas: ::1/32 remains the primary loopback address and MUST (SHOULD?) be
-assigned to a loopback interface.))
 
 # IANA Considerations
 
