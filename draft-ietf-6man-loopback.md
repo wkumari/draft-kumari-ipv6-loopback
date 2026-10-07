@@ -11,15 +11,16 @@ date:
 consensus: true
 v: 3
 area: Internet
-workgroup: WG Working Group
+workgroup: 6MAN
 keyword:
  - IPv6
  - Loopback
  - Documentation
 venue:
+  group: 6MAN
   type: Working Group
   github: wkumari/draft-kumari-ipv6-loopback
-  latest: https://wkumari.github.io/draft-kumari-ipv6-loopback/draft-kumari-ipv6-loopback.html
+  latest: https://wkumari.github.io/draft-kumari-ipv6-loopback/draft-ietf-6man-loopback.html
 
 author:
  -
