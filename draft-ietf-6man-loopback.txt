@@ -5,8 +5,8 @@
 6MAN                                                           G. Huston
 Internet-Draft                                                     APNIC
 Intended status: Standards Track                               W. Kumari
-Expires: 10 April 2027                                      Google, Inc.
-                                                          7 October 2026
+Expires: 11 April 2027                                      Google, Inc.
+                                                          8 October 2026
 
 
                     The IPv6 Loopback Address Prefix
@@ -61,7 +61,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 April 2027.
+   This Internet-Draft will expire on 11 April 2027.
 
 Copyright Notice
 
