@@ -36,7 +36,6 @@ author:
 normative:
   RFC4291: # RFC4291 - "IP Version 6 Addressing Architecture"
 
-
 informative:
   RFC791:  # RFC791 - "Internet Protocol"
   RFC990:  # RFC990 - "Assigned numbers"
