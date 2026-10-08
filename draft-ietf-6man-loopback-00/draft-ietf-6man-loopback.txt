@@ -2,15 +2,15 @@
 
 
 
-WG Working Group                                               G. Huston
+6MAN                                                           G. Huston
 Internet-Draft                                                     APNIC
 Intended status: Standards Track                               W. Kumari
-Expires: 10 April 2027                                      Google, Inc.
-                                                          7 October 2026
+Expires: 11 April 2027                                      Google, Inc.
+                                                          8 October 2026
 
 
                     The IPv6 Loopback Address Prefix
-                   draft-kumari-ipv6-loopback-latest
+                    draft-ietf-6man-loopback-latest
 
 Abstract
 
@@ -39,10 +39,9 @@ About This Document
    This note is to be removed before publishing as an RFC.
 
    The latest revision of this draft can be found at
-   https://wkumari.github.io/draft-kumari-ipv6-loopback/draft-kumari-
-   ipv6-loopback.html.  Status information for this document may be
-   found at https://datatracker.ietf.org/doc/draft-kumari-
-   ipv6-loopback/.
+   https://wkumari.github.io/draft-kumari-ipv6-loopback/draft-ietf-6man-
+   loopback.html.  Status information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-ietf-6man-loopback/.
 
    Source for this draft and an issue tracker can be found at
    https://github.com/wkumari/draft-kumari-ipv6-loopback.
@@ -62,7 +61,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 April 2027.
+   This Internet-Draft will expire on 11 April 2027.
 
 Copyright Notice
 
@@ -236,9 +235,6 @@ Table of Contents
 
    IPv6 addressing documents do not have any direct impact on Internet
    infrastructure security.
-
-   ((heas: ::1/32 remains the primary loopback address and MUST
-   (SHOULD?) be assigned to a loopback interface.))
 
 6.  IANA Considerations
 
