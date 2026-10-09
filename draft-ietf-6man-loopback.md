@@ -3,6 +3,7 @@
 title: "The IPv6 Loopback Address Prefix"
 abbrev: "IPv6 Loopback Prefix"
 category: std
+updates: 4291, 4007
 
 docname: draft-ietf-6man-loopback-latest
 submissiontype: IETF
@@ -15,6 +16,7 @@ workgroup: 6MAN
 keyword:
  - IPv6
  - Loopback
+ - Node-Local Unicast
  - Documentation
 venue:
   group: 6MAN
@@ -35,6 +37,7 @@ author:
 
 normative:
   RFC4291: # RFC4291 - "IP Version 6 Addressing Architecture"
+  RFC4007: # RFC4007 - "IPv6 Scoped Address Architecture"
 
 informative:
   RFC791:  # RFC791 - "Internet Protocol"
@@ -47,24 +50,20 @@ informative:
 
 --- abstract
 
-{ **Editor's note:** This document requests the allocation of a new IPv6 address
-prefix to be used for loopback instead of expanding into the existing ::/96.
-The specific prefix to be allocated is TBD/96, and the document updates the
-relevant RFCs and IANA registries to reflect this change. }
-
 This document updates the IP Version 6 Address Architecture to expand the size
-of the IPv6 loopback space from a single address to a /96 prefix.
+of the IPv6 loopback space from a single address to a /48 prefix, formally
+defined as Node-Local Unicast space.
 
-This change allows for a much larger number of loopback addresses in IPv6,
-which can be used for inter-process communication within a host and for network
-diagnostics.
+This change allows for a much larger number of loopback addresses and internal
+virtual networks within an IPv6 host, which can be used for inter-process
+communication, local virtualization, container networking, and diagnostics.
 
-The document also updates the IANA IPv6 Address registry and the IPv6 Special
-Purpose Address registry to reflect this change.
+This document updates RFC 4291 to define the prefix and its functional
+semantics, and updates RFC 4007 to specify how the prefix is integrated into
+the scoped address architecture.
 
-It updates RFC4291 to reflect the new loopback prefix and its functional
-semantics.
-
+It also updates the IANA IPv6 Address registry, the IPv6 Special-Purpose
+Address registry, and the Locally-Served DNS Zone Registry.
 
 --- middle
 
@@ -86,13 +85,20 @@ in modern IPv6-only and dual-stack environments.
 ## The Need for Expanded Host-Internal Space
 
 As application architectures have evolved, the restriction of a single IPv6
-loopback address has become a tangible bottleneck. Below are some examples of use cases which would benefit from an expanded loopback space:
+loopback address has become a tangible bottleneck. Below are some examples of
+use cases which would benefit from an expanded loopback space:
 
 - Application Testing and Containerization: Developers frequently run multiple
    instances of a service locally. In IPv4, these instances can bind to the
    same port on different 127.x.x.x addresses. In IPv6, developers are forced
    to modify application port numbers, which breaks environment parity and
    complicates test scaffolding.
+
+- Local Virtual Networks and Container Routing: Modern containerized runtimes
+  and microservice setups require running multiple virtual network segments
+  within a single machine. Utilizing a /48 prefix enables the creation of
+  multiple internal subnetworks and simulated network topologies completely
+  within a single physical node.
 
 - Local Proxying and Service Meshes: Complex local routing paradigms (such as
   sidecar proxies) often require distinct IP assignments to securely isolate
@@ -105,15 +111,16 @@ loopback address has become a tangible bottleneck. Below are some examples of us
   IPv6 requires a dedicated, local-only prefix.
 
 ## Terminology and Functional Semantics
+
 While historically referred to as "loopback" space, the functional requirement
 described in this document is a dedicated address block for host-internal
-virtual interfaces.
+virtual interfaces, referred to here as a **Node-Local Unicast Prefix**.
 
 The core semantic of this proposed space is strict isolation. Implementations
 MUST ensure that:
 
 - Addresses from this block can be assigned to multiple internal virtual
-  interfaces simultaneously.
+  interfaces and virtual bridge networks simultaneously.
 
 - Packets with a source or destination address drawn from this block MUST NOT
   be forwarded to any physical network interface.
@@ -123,11 +130,11 @@ MUST ensure that:
   packet MUST be dropped.
 
 To support these operational realities, this document requests the allocation
-of a new, dedicated IPv6 prefix (e.g., a /96 drawn from the IANA IPv6
-Special-Purpose Address Registry) to serve as expanded host-internal virtual
-interface space. This block will operate with the same fundamental constraints
-as the primary ::1/128 loopback address, without overlapping with the
-Unspecified Address (::/128).
+of a new, dedicated IPv6 prefix (e.g., a /48 drawn from the IANA IPv6
+Special-Purpose Address Registry) to serve as expanded Node-Local Unicast
+space. This block will operate with the same fundamental constraints as the
+primary ::1/128 loopback address, without overlapping with the Unspecified
+Address (::/128).
 
 # Conventions and Definitions
 
@@ -151,18 +158,19 @@ addressed to a loopback address should ever be passed to any physical network.
 {{RFC1884}}, the original IPv6 Addressing Architecture document, allocates a
 single local loopback address, ::1. This single address allocation has been
 preserved in all subsequent revisions to the IPv6 addressing specification
-({{RFC2373}}, {{RFC3513}}, {{RFC4291}})
+({{RFC2373}}, {{RFC3513}}, {{RFC4291}}).
 
 Loopback addresses enable localhost communication, network diagnostics, and
 inter-process connections, making them essential for various local functions.
 
 Multiple loopback addresses can increase the number of distinct sockets that
-can be used for inter-process communication within a host. A larger local
-loopback prefix in IPv6 can permit large numbers of distinct concurrent
-loopback TCP connections within a single host, which is comparable to the
-functionality supported by the IPv4 loopback address prefix.
+can be used for inter-process communication within a host. A larger Node-Local
+Unicast prefix in IPv6 can permit large numbers of distinct concurrent loopback
+TCP connections and complete virtualized subnets within a single host, which is
+comparable to and extends the functionality supported by the IPv4 loopback
+address prefix.
 
-# The IPv6 Loopback Prefix
+# The IPv6 Loopback / Node-Local Unicast Prefix
 
 The IANA IPv6 Address registry denotes the address prefix ::/8 as being
 reserved by the IETF in {{RFC3513}} {{RFC4291}}. This range of addresses has
@@ -170,42 +178,66 @@ been partially allocated with the prefix ::FFFF:0:0/96 being used in the
 context of an IPv6 transition technology to map IPv4 addresses into IPv6
 addresses.
 
-The document expands the set of IPv6 loopback addresses by adding an additional
-prefix: TBD/96.
+This document expands the set of IPv6 loopback addresses by adding an additional
+Node-Local Unicast prefix: TBD/48.
+
+## Update to RFC 4291
 
 This RFC replaces section 2.5.3 of {{RFC4291}} as follows:
 
-> The unicast addresses 0:0:0:0:0:0:0:1 and TBD/96 are called the loopback
-> address. These may be used by a node to send an IPv6 packet to itself.  They
-> must not be assigned to any physical interface.  They are treated as having
-> Link-Local scope, and may be thought of as the Link-Local unicast addresses
-> of a virtual interface (typically called the "loopback interface") to an
-> imaginary link that goes nowhere.
+> The unicast addresses 0:0:0:0:0:0:0:1 and the prefix TBD/48 are defined for
+> loopback and node-local unicast functions. These may be used by a node to
+> send IPv6 packets to itself, or to communicate across local virtual interfaces
+> within the same host. They must not be assigned to any physical interface.
+> They are treated as having Link-Local scope, and may be thought of as the
+> Link-Local unicast addresses of a virtual interface (typically called the
+> "loopback interface" or local virtual bridges) to an imaginary link that goes
+> nowhere.
 
-> The loopback addresses must not be used as the source address in IPv6 packets
-> that are sent outside of a single node.  An IPv6 packet with a destination
-> address in the loopback space must never be sent outside of a single node
-> and must never be forwarded by an IPv6 router.  A packet received on an
-> interface with a destination address of loopback must be dropped.
+> The loopback address and addresses within the TBD/48 prefix must not be used
+> as the source address in IPv6 packets that are sent outside of a single node.
+> An IPv6 packet with a destination address in this prefix must never be sent
+> outside of a single node and must never be forwarded by an IPv6 router.  A
+> packet received on an interface with a destination address of loopback or
+> within the TBD/48 prefix must be dropped.
 
+## Update to RFC 4007 (IPv6 Scoped Address Architecture)
+
+Section 11.1 of {{RFC4007}} ("Non-Global Addresses") specifies the zone-id
+treatment of scoped addresses. It explicitly dictates that the loopback
+address `::1` does not require and must not be qualified with a zone identifier.
+
+This document updates Section 11.1 of {{RFC4007}} to extend this rule to the
+entire Node-Local Unicast prefix (TBD/48).
+
+Because addresses drawn from the TBD/48 prefix are strictly host-internal and
+do not associate with physical links, they MUST NOT be qualified with a zone
+identifier in user interfaces or socket APIs. Node implementations MUST treat
+the entire TBD/48 prefix as belonging to the default node-local loopback zone.
 
 # Security Considerations
 
 IPv6 addressing documents do not have any direct impact on Internet
 infrastructure security.
 
+However, system implementations MUST ensure strict isolation. Packets containing
+destination or source addresses from the TBD/48 block MUST be dropped if they
+appear on physical media, preventing leakage of host-internal IPC or virtual
+network communications to the public Internet, and mitigating any potential
+external spoofing or scanning vectors.
 
 # IANA Considerations
 
-The IANA is requested to assign a new IPv6 address prefix, TBD/96, to be used
-for the loopback function as described in this document. This prefix should be
-allocated from the IANA IPv6 Special-Purpose Address registry.
+The IANA is requested to assign a new IPv6 address prefix, TBD/48, to be used
+for the loopback and node-local unicast functions as described in this
+document. This prefix should be allocated from the IANA IPv6 Special-Purpose
+Address registry.
 
 The IANA is requested to amend the IPv6 Address registry and the IPv6 Special
 Purpose Address registry to record the designation of this address prefix.
 
 The IANA is also requested to add an entry to the IPv6 Locally-Served DNS Zone
-Registry for the new loopback prefix, TBD/96, to ensure that reverse DNS
+Registry for the new prefix, TBD/48, to ensure that reverse DNS
 lookups for addresses within this prefix are properly handled.
 
 --- back
@@ -215,8 +247,9 @@ lookups for addresses within this prefix are properly handled.
 
 The authors would like to thank Alejandro Acosta, Brian Carpenter, Antonis
 Chariton, Owen DeLong, Gert Doering, Jeremy Duncan, Lorenzo Colitti, David
-Farmer, Steinar Haug, Gábor Lencse, Terry Sweetser, Ole Trøan, and Maciej
-Żenczykowski for their comments, discussions, and suggestions on this topic.
+Farmer, Steinar Haug, Gábor Lencse, Michael Richardson, Terry Sweetser, Ole
+Trøan, and Maciej Żenczykowski for their comments, discussions, and suggestions
+on this topic.
 
 Additional thanks to John Heasley for submitting Pull Requests. In addition we
 would like to thank Jen Linkova for presenting the proposal at IETF 125, as the
@@ -232,3 +265,4 @@ individuals who have participated in these discussions over the years.
 Unfortunately, at least one of the authors has a terrible memory, and has lost
 track of all those who have contributed to this topic over the years, and will
 be more than happy to acknowledge their input if reminded of this :-)
+
