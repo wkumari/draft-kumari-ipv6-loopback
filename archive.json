@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-08T00:27:14.869596+00:00",
+  "timestamp": "2026-10-11T00:30:56.714318+00:00",
   "repo": "wkumari/draft-kumari-ipv6-loopback",
   "labels": [
     {
@@ -111,6 +111,42 @@
         "oid": "58185d5eaaf1613459130709fbcb745e2ebdde98"
       },
       "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOQXnmMc8AAAABHbr1dw",
+      "title": "Address the comments from adoption.",
+      "url": "https://github.com/wkumari/draft-kumari-ipv6-loopback/pull/3",
+      "state": "MERGED",
+      "author": "wkumari",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "**Summary:**\nMaciej \u017benczykowski and others: Changes the requested size to a /48 - this lets containers (e.g ContainerLabs) have multiple /64 networks -- this will require a discussion  with the WG!\n\nBrian Carpenter: Formally update RFC 4007\n\nMCR: Loopback isn't the right term  - add a Node-Local Unicast Prefix term.\n\nNotes: \nJen kindly summarized the comments received during adoption:\n\n> 1. A concern re: using the 'loopback' term [3],[4]\n> 2. The draft should probably update RFC4007 [4]\n> 3. The prefix size: multiple comments suggested using /64 [5] \n\n See: [https://mailarchive.ietf.org/arch/msg/ipv6/JDCXJyMXPL_2gl2TjTByVOPNCRc/](https://mailarchive.ietf.org/arch/msg/ipv6/JDCXJyMXPL_2gl2TjTByVOPNCRc/)\n\nHere is longer version, and how I tried to address them:\n### Brian Carpenter:\n**Comment**: RFC 4007 explicitly states that ::1 does not carry a zone_id.\nMaciej: The updated draft lists RFC 4007 in Updates. I added a dedicated section (\"Update to RFC 4007\") stating that the new prefix belongs to the default node-local loopback zone and MUST NOT be qualified with a zone_id in user interfaces or socket APIs. \n\n### MCR:\n**Comment**: False Loopback Analogy with IPv4: The term \"loopback\" strictly refers to a single interface looping traffic back to itself. In modern local virtualization (such as container bridges or sidecar proxies), we are dealing with multi-interface node-internal networks.\n\n**Resolution**: Adopted \"Node-Local Unicast\" Terminology: Added term \"Node-Local Unicast Prefix\" throughout the document (including Section 1.2 \"Terminology and Functional Semantics\") to accurately represent the prefix's functional role. I retained the \"Loopback\" phrasing in the document's title because, well, its the title. I also want people to be able to find this easiler, and \"loopback\" is a common term.\n\n### Maciej \u017benczykowski (and others):\n**Comment**: The draft was asking for /96, and this doesn't really work well in practice.\n\n**Resolution**: Wheee, this is a find one. We has started with /32, then something else, then /96, etc. I can't quite remember how we got to /96, but that does really seem like the worst possible number. I'm proposing that we go back to /48 - this allows for having multiple virtual networks (e.g Docker containers, or ContainerLabs) all using normal SLAAC compatible /64s. This was is people want to create things like internal \"test\" networks within a host they can do so without having to fiddle with things. I really don't think that a /48 is asking for \"too much space\", but presumably there will be much discussion in the WG on numbers... ",
+      "createdAt": "2026-10-08T22:54:50Z",
+      "updatedAt": "2026-10-09T00:00:19Z",
+      "baseRepository": "wkumari/draft-kumari-ipv6-loopback",
+      "baseRefName": "main",
+      "baseRefOid": "212fcadb335f1803c5df4e44f04b20ae1ec6420c",
+      "headRepository": "wkumari/draft-kumari-ipv6-loopback",
+      "headRefName": "adoption_comments",
+      "headRefOid": "d92ef5a595fed4894c43738fc4ddf09331107ced",
+      "closedAt": "2026-10-09T00:00:19Z",
+      "mergedAt": "2026-10-09T00:00:19Z",
+      "mergedBy": "wkumari",
+      "mergeCommit": {
+        "oid": "79a4228a76010fc2f3739646510175f887492324"
+      },
+      "comments": [
+        {
+          "author": "gih900",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This all looks fine to me - frankly I'd be inclined to go 1 step further to a /32, but its not a big thing either way!",
+          "createdAt": "2026-10-08T22:59:47Z",
+          "updatedAt": "2026-10-08T22:59:47Z"
+        }
+      ],
       "reviews": []
     }
   ]
